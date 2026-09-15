@@ -10,4 +10,5 @@ public interface EvaluacionService {
     Evaluacion save(Evaluacion evaluacion);
     void deleteById(Long id);
     List<Evaluacion> findByCursoIdIn(List<Long> cursoIds);
+    List<Evaluacion> findByCursoId(Long cursoId);
 }

@@ -9,4 +9,5 @@ public interface MatriculaService {
     List<Matricula> findByEstudianteId(Long estudianteId);
     List<Matricula> findByCursoId(Long cursoId);
     boolean isEnrolled(Long estudianteId, Long cursoId);
+    void deleteByEstudianteIdAndCursoId(Long estudianteId, Long cursoId);
 }

@@ -58,4 +58,10 @@ public class MatriculaServiceImpl implements MatriculaService {
     public boolean isEnrolled(Long estudianteId, Long cursoId) {
         return matriculaRepository.findByEstudianteIdAndCursoId(estudianteId, cursoId).isPresent();
     }
+
+    @Override
+    @Transactional
+    public void deleteByEstudianteIdAndCursoId(Long estudianteId, Long cursoId) {
+        matriculaRepository.findByEstudianteIdAndCursoId(estudianteId, cursoId).ifPresent(matriculaRepository::delete);
+    }
 }

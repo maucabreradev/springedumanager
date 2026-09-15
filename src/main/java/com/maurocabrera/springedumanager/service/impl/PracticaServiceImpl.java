@@ -41,4 +41,9 @@ public class PracticaServiceImpl implements PracticaService {
     public List<Practica> findByCursoIdIn(List<Long> cursoIds) {
         return practicaRepository.findByCursoIdIn(cursoIds);
     }
+
+    @Override
+    public List<Practica> findByCursoId(Long cursoId) {
+        return practicaRepository.findByCursoId(cursoId);
+    }
 }

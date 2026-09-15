@@ -41,4 +41,9 @@ public class EvaluacionServiceImpl implements EvaluacionService {
     public List<Evaluacion> findByCursoIdIn(List<Long> cursoIds) {
         return evaluacionRepository.findByCursoIdIn(cursoIds);
     }
+
+    @Override
+    public List<Evaluacion> findByCursoId(Long cursoId) {
+        return evaluacionRepository.findByCursoId(cursoId);
+    }
 }
