@@ -22,6 +22,8 @@
 </header>
 <main>
     <div class="container" th:fragment="content">
+        <div th:if="${message}" class="success" th:text="${message}"></div>
+        <div th:if="${error}" class="error" th:text="${error}"></div>
         Contenido predeterminado
     </div>
 </main>

@@ -36,4 +36,9 @@ public class EvaluacionServiceImpl implements EvaluacionService {
     public void deleteById(Long id) {
         evaluacionRepository.deleteById(id);
     }
+
+    @Override
+    public List<Evaluacion> findByCursoIdIn(List<Long> cursoIds) {
+        return evaluacionRepository.findByCursoIdIn(cursoIds);
+    }
 }

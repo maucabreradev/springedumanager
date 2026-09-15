@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${evaluacion.id == null} ? 'Nueva Evaluación' : 'Editar Evaluación'">Formulario de Evaluación</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+<header th:replace="layout/layout :: header"></header>
+<main>
+    <div class="container" th:fragment="content">
+        <h1 th:text="${evaluacion.id == null} ? 'Nueva Evaluación' : 'Editar Evaluación'">Formulario de Evaluación</h1>
+        <form th:action="${evaluacion.id == null} ? @{/admin/evaluations} : @{/admin/evaluations/__{evaluacion.id}__}" method="post" class="auth-form">
+            <input type="hidden" th:if="${evaluacion.id != null}" th:field="*{id}" />
+            <div class="form-group">
+                <label for="titulo">Título</label>
+                <input type="text" id="titulo" name="titulo" th:field="*{titulo}" required>
+            </div>
+            <div class="form-group">
+                <label for="descripcion">Descripción</label>
+                <textarea id="descripcion" name="descripcion" th:field="*{descripcion}" rows="4"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="curso">Curso</label>
+                <select id="curso" name="curso.id" th:field="*{curso.id}" required>
+                    <option value="">-- Seleccionar Curso --</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="puntajeMaximo">Puntaje Máximo</label>
+                <input type="number" id="puntajeMaximo" name="puntajeMaximo" th:field="*{puntajeMaximo}" step="0.01" min="0" required>
+            </div>
+            <div class="form-group">
+                <label for="fecha">Fecha</label>
+                <input type="date" id="fecha" name="fecha" th:field="*{fecha}" required>
+            </div>
+            <div class="form-group">
+                <label for="tipo">Tipo</label>
+                <select id="tipo" name="tipo" th:field="*{tipo}">
+                    <option value="EXAMEN">Examen</option>
+                    <option value="TRABAJO">Trabajo</option>
+                    <option value="PROYECTO">Proyecto</option>
+                    <option value="OTRO">Otro</option>
+                </select>
+            </div>
+            <button type="submit" class="btn btn-primary">Guardar</button>
+        </form>
+    </div>
+</main>
+<footer th:replace="layout/layout :: footer"></footer>
+</body>
+</html>

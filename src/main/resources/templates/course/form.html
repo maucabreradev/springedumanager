@@ -2,15 +2,16 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Formulario de Curso</title>
+    <title th:text="${curso.id == null} ? 'Nuevo Curso' : 'Editar Curso'">Formulario de Curso</title>
     <link rel="stylesheet" th:href="@{/css/style.css}">
 </head>
 <body>
 <header th:replace="layout/layout :: header"></header>
 <main>
     <div class="container" th:fragment="content">
-        <h1>Formulario de Curso</h1>
-        <form th:action="@{/admin/courses}" method="post" class="auth-form">
+        <h1 th:text="${curso.id == null} ? 'Nuevo Curso' : 'Editar Curso'">Formulario de Curso</h1>
+        <form th:action="${curso.id == null} ? @{/admin/courses} : @{/admin/courses/__{curso.id}__}" method="post" class="auth-form">
+            <input type="hidden" th:if="${curso.id != null}" th:field="*{id}" />
             <div class="form-group">
                 <label for="nombre">Nombre</label>
                 <input type="text" id="nombre" name="nombre" th:field="*{nombre}" required>

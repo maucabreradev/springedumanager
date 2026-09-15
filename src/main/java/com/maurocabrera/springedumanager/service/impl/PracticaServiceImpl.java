@@ -36,4 +36,9 @@ public class PracticaServiceImpl implements PracticaService {
     public void deleteById(Long id) {
         practicaRepository.deleteById(id);
     }
+
+    @Override
+    public List<Practica> findByCursoIdIn(List<Long> cursoIds) {
+        return practicaRepository.findByCursoIdIn(cursoIds);
+    }
 }

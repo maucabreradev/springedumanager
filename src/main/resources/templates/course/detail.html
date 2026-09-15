@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${curso.nombre}">Detalle del Curso</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+<header th:replace="layout/layout :: header"></header>
+<main>
+    <div class="container" th:fragment="content">
+        <h1 th:text="${curso.nombre}">Curso</h1>
+        <a th:href="@{/admin/courses}" class="btn btn-secondary">Volver a la Lista</a>
+        <div class="card">
+            <p th:text="${curso.descripcion}">Descripción</p>
+            <p><strong>Créditos:</strong> <span th:text="${curso.creditos}">0</span></p>
+            <p><strong>Coordinador:</strong> <span th:text="${curso.coordinador}">-</span></p>
+            <p><strong>Fecha Inicio:</strong> <span th:text="${#temporals.format(curso.fechaInicio, 'dd/MM/yyyy')}">-</span></p>
+            <p><strong>Fecha Fin:</strong> <span th:text="${#temporals.format(curso.fechaFin, 'dd/MM/yyyy')}">-</span></p>
+            <p><strong>Activo:</strong> <span th:text="${curso.activo} ? 'Sí' : 'No'">-</span></p>
+        </div>
+    </div>
+</main>
+<footer th:replace="layout/layout :: footer"></footer>
+</body>
+</html>

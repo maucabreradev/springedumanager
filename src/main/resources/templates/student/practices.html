@@ -2,15 +2,31 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Prácticas</title>
+    <title>Mis Prácticas</title>
     <link rel="stylesheet" th:href="@{/css/style.css}">
 </head>
 <body>
 <header th:replace="layout/layout :: header"></header>
 <main>
     <div class="container" th:fragment="content">
-        <h1>Prácticas</h1>
-        <p>Lista de prácticas asignadas</p>
+        <h1>Mis Prácticas</h1>
+        <table>
+            <thead>
+                <tr><th>Título</th><th>Curso</th><th>Fecha Entrega</th><th>Estado</th></tr>
+            </thead>
+            <tbody>
+                <tr th:each="practica : ${practicas}">
+                    <td th:text="${practica.titulo}">Título</td>
+                    <td th:text="${practica.curso?.nombre}">Curso</td>
+                    <td th:text="${#temporals.format(practica.fechaEntrega, 'dd/MM/yyyy')}">Fecha</td>
+                    <td th:text="${practica.estado}">Estado</td>
+                </tr>
+                <tr th:if="${#lists.isEmpty(practicas)}">
+                    <td colspan="4">No tienes prácticas asignadas</td>
+                </tr>
+            </tbody>
+        </table>
+        <a th:href="@{/estudiante/dashboard}" class="btn btn-secondary">Volver al Dashboard</a>
     </div>
 </main>
 <footer th:replace="layout/layout :: footer"></footer>

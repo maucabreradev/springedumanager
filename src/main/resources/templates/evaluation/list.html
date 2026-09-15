@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Evaluaciones</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+<header th:replace="layout/layout :: header"></header>
+<main>
+    <div class="container" th:fragment="content">
+        <h1>Evaluaciones</h1>
+        <a th:href="@{/admin/evaluations/new}" class="btn btn-primary">Nueva Evaluación</a>
+        <table>
+            <thead>
+                <tr><th>Título</th><th>Descripción</th><th>Curso</th><th>Puntaje Max.</th><th>Tipo</th><th>Fecha</th><th>Acciones</th></tr>
+            </thead>
+            <tbody>
+                <tr th:each="evaluacion : ${evaluaciones}">
+                    <td th:text="${evaluacion.titulo}">Título</td>
+                    <td th:text="${evaluacion.descripcion}">Descripción</td>
+                    <td th:text="${evaluacion.curso?.nombre}">-</td>
+                    <td th:text="${evaluacion.puntajeMaximo}">0</td>
+                    <td th:text="${evaluacion.tipo}">Tipo</td>
+                    <td th:text="${#temporals.format(evaluacion.fecha, 'dd/MM/yyyy')}">-</td>
+                    <td>
+                        <a th:href="@{/admin/evaluations/edit/__{evaluacion.id}__}" class="btn btn-secondary">Editar</a>
+                        <a th:href="@{/admin/evaluations/delete/__{evaluacion.id}__}" class="btn btn-secondary" onclick="return confirm('¿Eliminar esta evaluación?')">Eliminar</a>
+                        <a th:href="@{/admin/evaluations/__{evaluacion.id}__}" class="btn btn-secondary">Ver</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</main>
+<footer th:replace="layout/layout :: footer"></footer>
+</body>
+</html>

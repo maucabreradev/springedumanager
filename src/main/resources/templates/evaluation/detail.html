@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${evaluacion.titulo}">Detalle de Evaluación</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+<header th:replace="layout/layout :: header"></header>
+<main>
+    <div class="container" th:fragment="content">
+        <h1 th:text="${evaluacion.titulo}">Evaluación</h1>
+        <a th:href="@{/admin/evaluations}" class="btn btn-secondary">Volver a la Lista</a>
+        <div class="card">
+            <h2 th:text="${evaluacion.titulo}">Título</h2>
+            <p th:text="${evaluacion.descripcion}">Descripción</p>
+            <p><strong>Curso:</strong> <span th:text="${evaluacion.curso?.nombre}">-</span></p>
+            <p><strong>Puntaje Máximo:</strong> <span th:text="${evaluacion.puntajeMaximo}">0</span></p>
+            <p><strong>Tipo:</strong> <span th:text="${evaluacion.tipo}">-</span></p>
+            <p><strong>Fecha:</strong> <span th:text="${#temporals.format(evaluacion.fecha, 'dd/MM/yyyy')}">-</span></p>
+        </div>
+    </div>
+</main>
+<footer th:replace="layout/layout :: footer"></footer>
+</body>
+</html>

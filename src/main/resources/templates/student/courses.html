@@ -2,15 +2,33 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Cursos</title>
+    <title>Cursos Disponibles</title>
     <link rel="stylesheet" th:href="@{/css/style.css}">
 </head>
 <body>
 <header th:replace="layout/layout :: header"></header>
 <main>
     <div class="container" th:fragment="content">
-        <h1>Cursos</h1>
-        <p>Explora los cursos disponibles</p>
+        <h1>Cursos Disponibles</h1>
+        <p>Explora los cursos disponibles para matricularte</p>
+        <table>
+            <thead>
+                <tr><th>Nombre</th><th>Descripción</th><th>Créditos</th><th>Coordinador</th><th>Acción</th></tr>
+            </thead>
+            <tbody>
+                <tr th:each="curso : ${cursos}">
+                    <td th:text="${curso.nombre}">Nombre</td>
+                    <td th:text="${curso.descripcion}">Descripción</td>
+                    <td th:text="${curso.creditos}">0</td>
+                    <td th:text="${curso.coordinador}">-</td>
+                    <td>
+                        <a th:href="@{/estudiante/course/__{curso.id}__}" class="btn btn-secondary">Ver Detalle</a>
+                        <a th:href="@{/estudiante/enroll/__{curso.id}__}" class="btn btn-secondary">Matricularse</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <a th:href="@{/estudiante/dashboard}" class="btn btn-secondary">Volver al Dashboard</a>
     </div>
 </main>
 <footer th:replace="layout/layout :: footer"></footer>

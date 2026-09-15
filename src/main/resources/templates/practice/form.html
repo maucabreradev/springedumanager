@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${practica.id == null} ? 'Nueva Práctica' : 'Editar Práctica'">Formulario de Práctica</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+<header th:replace="layout/layout :: header"></header>
+<main>
+    <div class="container" th:fragment="content">
+        <h1 th:text="${practica.id == null} ? 'Nueva Práctica' : 'Editar Práctica'">Formulario de Práctica</h1>
+        <form th:action="${practica.id == null} ? @{/admin/practices} : @{/admin/practices/__{practica.id}__}" method="post" class="auth-form">
+            <input type="hidden" th:if="${practica.id != null}" th:field="*{id}" />
+            <div class="form-group">
+                <label for="titulo">Título</label>
+                <input type="text" id="titulo" name="titulo" th:field="*{titulo}" required>
+            </div>
+            <div class="form-group">
+                <label for="descripcion">Descripción</label>
+                <textarea id="descripcion" name="descripcion" th:field="*{descripcion}" rows="4"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="curso">Curso</label>
+                <select id="curso" name="curso.id" th:field="*{curso.id}" required>
+                    <option value="">-- Seleccionar Curso --</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="fechaEntrega">Fecha de Entrega</label>
+                <input type="date" id="fechaEntrega" name="fechaEntrega" th:field="*{fechaEntrega}" required>
+            </div>
+            <div class="form-group">
+                <label for="estado">Estado</label>
+                <select id="estado" name="estado" th:field="*{estado}">
+                    <option value="PENDIENTE">Pendiente</option>
+                    <option value="EN_PROGRESO">En Progreso</option>
+                    <option value="ENTREGADA">Entregada</option>
+                </select>
+            </div>
+            <button type="submit" class="btn btn-primary">Guardar</button>
+        </form>
+    </div>
+</main>
+<footer th:replace="layout/layout :: footer"></footer>
+</body>
+</html>

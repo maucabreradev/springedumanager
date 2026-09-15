@@ -9,4 +9,5 @@ public interface PracticaService {
     Practica findById(Long id);
     Practica save(Practica practica);
     void deleteById(Long id);
+    List<Practica> findByCursoIdIn(List<Long> cursoIds);
 }

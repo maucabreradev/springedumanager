@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Prácticas</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+<header th:replace="layout/layout :: header"></header>
+<main>
+    <div class="container" th:fragment="content">
+        <h1>Prácticas</h1>
+        <a th:href="@{/admin/practices/new}" class="btn btn-primary">Nueva Práctica</a>
+        <table>
+            <thead>
+                <tr><th>Título</th><th>Descripción</th><th>Curso</th><th>Fecha Entrega</th><th>Estado</th><th>Acciones</th></tr>
+            </thead>
+            <tbody>
+                <tr th:each="practica : ${practicas}">
+                    <td th:text="${practica.titulo}">Título</td>
+                    <td th:text="${practica.descripcion}">Descripción</td>
+                    <td th:text="${practica.curso?.nombre}">-</td>
+                    <td th:text="${#temporals.format(practica.fechaEntrega, 'dd/MM/yyyy')}">-</td>
+                    <td th:text="${practica.estado}">Estado</td>
+                    <td>
+                        <a th:href="@{/admin/practices/edit/__{practica.id}__}" class="btn btn-secondary">Editar</a>
+                        <a th:href="@{/admin/practices/delete/__{practica.id}__}" class="btn btn-secondary" onclick="return confirm('¿Eliminar esta práctica?')">Eliminar</a>
+                        <a th:href="@{/admin/practices/__{practica.id}__}" class="btn btn-secondary">Ver</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</main>
+<footer th:replace="layout/layout :: footer"></footer>
+</body>
+</html>

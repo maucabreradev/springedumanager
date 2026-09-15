@@ -10,4 +10,5 @@ import java.util.List;
 public interface PracticaRepository extends JpaRepository<Practica, Long> {
     List<Practica> findByCursoId(Long cursoId);
     List<Practica> findByEstado(String estado);
+    List<Practica> findByCursoIdIn(List<Long> cursoIds);
 }
