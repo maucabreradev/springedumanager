@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Panel de Administración</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+<header th:replace="layout/layout :: header"></header>
+<main>
+    <div class="container" th:fragment="content">
+        <h1>Panel de Administración</h1>
+        <nav>
+            <a th:href="@{/admin/courses}">Gestionar Cursos</a>
+            <a th:href="@{/admin/practices}">Gestionar Prácticas</a>
+            <a th:href="@{/admin/evaluations}">Gestionar Evaluaciones</a>
+        </nav>
+    </div>
+</main>
+<footer th:replace="layout/layout :: footer"></footer>
+</body>
+</html>

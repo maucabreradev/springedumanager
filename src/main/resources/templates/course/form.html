@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Formulario de Curso</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+<header th:replace="layout/layout :: header"></header>
+<main>
+    <div class="container" th:fragment="content">
+        <h1>Formulario de Curso</h1>
+        <form th:action="@{/admin/courses}" method="post" class="auth-form">
+            <div class="form-group">
+                <label for="nombre">Nombre</label>
+                <input type="text" id="nombre" name="nombre" th:field="*{nombre}" required>
+            </div>
+            <div class="form-group">
+                <label for="descripcion">Descripción</label>
+                <textarea id="descripcion" name="descripcion" th:field="*{descripcion}"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="creditos">Créditos</label>
+                <input type="number" id="creditos" name="creditos" th:field="*{creditos}" required>
+            </div>
+            <div class="form-group">
+                <label for="coordinador">Coordinador</label>
+                <input type="text" id="coordinador" name="coordinador" th:field="*{coordinador}">
+            </div>
+            <button type="submit" class="btn btn-primary">Guardar</button>
+        </form>
+    </div>
+</main>
+<footer th:replace="layout/layout :: footer"></footer>
+</body>
+</html>

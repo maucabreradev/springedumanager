@@ -1,17 +1,15 @@
 package com.maurocabrera.springedumanager.entity;
 
 import jakarta.persistence.*;
-import lombok.*;
+import lombok.NoArgsConstructor;
+import lombok.AllArgsConstructor;
 
 import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "matriculas")
-@Getter
-@Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
 public class Matricula {
 
     @Id
@@ -29,11 +27,16 @@ public class Matricula {
     @Column(name = "fecha_matricula")
     private LocalDateTime fechaMatricula;
 
-    @Column(nullable = false, length = 50)
     private String estado = "ACTIVA";
 
-    @PrePersist
-    public void prePersist() {
-        fechaMatricula = LocalDateTime.now();
-    }
+    public Long getId() { return id; }
+    public void setId(Long id) { this.id = id; }
+    public Estudiante getEstudiante() { return estudiante; }
+    public void setEstudiante(Estudiante estudiante) { this.estudiante = estudiante; }
+    public Curso getCurso() { return curso; }
+    public void setCurso(Curso curso) { this.curso = curso; }
+    public LocalDateTime getFechaMatricula() { return fechaMatricula; }
+    public void setFechaMatricula(LocalDateTime fechaMatricula) { this.fechaMatricula = fechaMatricula; }
+    public String getEstado() { return estado; }
+    public void setEstado(String estado) { this.estado = estado; }
 }
