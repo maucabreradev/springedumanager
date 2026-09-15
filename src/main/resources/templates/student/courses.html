@@ -22,8 +22,8 @@
                     <td th:text="${curso.creditos}">0</td>
                     <td th:text="${curso.coordinador}">-</td>
                     <td>
-                        <a th:href="@{/estudiante/course/__{curso.id}__}" class="btn btn-secondary">Ver Detalle</a>
-                        <a th:href="@{/estudiante/enroll/__{curso.id}__}" class="btn btn-secondary">Matricularse</a>
+                        <a th:href="@{/estudiante/course/{id}(id=${curso.id})}" class="btn btn-secondary">Ver Detalle</a>
+                        <a th:href="@{/estudiante/enroll/{id}(id=${curso.id})}" class="btn btn-secondary">Matricularse</a>
                     </td>
                 </tr>
             </tbody>

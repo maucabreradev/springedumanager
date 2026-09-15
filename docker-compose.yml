@@ -17,5 +17,20 @@ services:
       timeout: 5s
       retries: 10
 
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: springedumanager-phpmyadmin
+    depends_on:
+      - mysql
+    ports:
+      - "8081:80"
+    environment:
+      PMA_HOST: mysql
+      PMA_USER: springedu
+      PMA_PASSWORD: springedupass
+    volumes:
+      - phpmyadmin_data:/etc/phpmyadmin
+
 volumes:
   mysql_data:
+  phpmyadmin_data:

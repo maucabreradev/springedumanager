@@ -9,7 +9,12 @@
 <header th:replace="layout/layout :: header"></header>
 <main>
     <div class="container" th:fragment="content">
+        <nav class="breadcrumbs">
+            <a th:href="@{/admin}">Admin</a> &gt;
+            <a th:href="@{/admin/courses}">Cursos</a>
+        </nav>
         <h1>Cursos</h1>
+        <a th:href="@{/admin/courses/new}" class="btn btn-primary">Nuevo Curso</a>
         <table>
             <thead>
                 <tr><th>Nombre</th><th>Descripción</th><th>Créditos</th><th>Coordinador</th><th>Activo</th></tr>

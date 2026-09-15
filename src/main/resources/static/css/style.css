@@ -161,9 +161,21 @@ main {
     margin-bottom: 1rem;
 }
 
-footer {
-    text-align: center;
-    padding: 1rem;
-    color: #999;
-    font-size: 0.8rem;
+.breadcrumbs {
+    margin-bottom: 1rem;
+    padding: 0.5rem 0;
+}
+
+.breadcrumbs a {
+    color: #e94560;
+    text-decoration: none;
+    margin-right: 0.5rem;
+}
+
+.breadcrumbs a:hover {
+    text-decoration: underline;
+}
+
+.breadcrumbs span {
+    color: #666;
 }

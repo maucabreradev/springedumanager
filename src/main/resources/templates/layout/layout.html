@@ -22,9 +22,20 @@
 </header>
 <main>
     <div class="container" th:fragment="content">
+        <nav th:if="${#strings.startsWith(#httpServletRequest.requestURI, '/admin')}" class="breadcrumbs">
+            <a th:href="@{/admin}">Admin</a> &gt;
+            <a th:href="@{/admin/courses}">Cursos</a> &gt;
+            <span th:text="${#httpServletRequest.requestURI}"></span>
+        </nav>
+        <nav th:if="${#strings.startsWith(#httpServletRequest.requestURI, '/estudiante')}" class="breadcrumbs">
+            <a th:href="@{/estudiante/dashboard}">Dashboard</a> &gt;
+            <span th:text="${#httpServletRequest.requestURI}"></span>
+        </nav>
         <div th:if="${message}" class="success" th:text="${message}"></div>
         <div th:if="${error}" class="error" th:text="${error}"></div>
-        Contenido predeterminado
+        <div th:fragment="content">
+            Contenido predeterminado
+        </div>
     </div>
 </main>
 <footer th:fragment="footer">

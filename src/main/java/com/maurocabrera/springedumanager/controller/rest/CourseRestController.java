@@ -30,10 +30,9 @@ public class CourseRestController {
 
     @GetMapping
     public ResponseEntity<List<CursoResponse>> findAll() {
-        List<CursoResponse> cursos = cursoService.findAll().stream()
-            .map(this::toResponse)
-            .collect(Collectors.toList());
-        return ResponseEntity.ok(cursos);
+        List<Curso> cursos = cursoService.findAll();
+        List<CursoResponse> response = cursos.stream().map(this::toResponse).collect(Collectors.toList());
+        return ResponseEntity.ok(response);
     }
 
     @GetMapping("/{id}")
