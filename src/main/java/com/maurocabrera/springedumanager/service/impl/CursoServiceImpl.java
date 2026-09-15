@@ -27,4 +27,8 @@ public class CursoServiceImpl {
     public Curso save(Curso curso) {
         return cursoRepository.save(curso);
     }
+
+    public void deleteById(Long id) {
+        cursoRepository.deleteById(id);
+    }
 }
