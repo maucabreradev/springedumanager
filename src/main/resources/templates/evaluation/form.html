@@ -43,6 +43,7 @@
                     <option value="OTRO">Otro</option>
                 </select>
             </div>
+            <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
             <button type="submit" class="btn btn-primary">Guardar</button>
         </form>
     </div>
