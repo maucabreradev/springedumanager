@@ -40,9 +40,6 @@ public class Curso {
     @OneToMany(mappedBy = "curso", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private Set<Evaluacion> evaluaciones = new HashSet<>();
 
-    @ManyToMany(mappedBy = "cursos")
-    private Set<Estudiante> estudiantes = new HashSet<>();
-
     public Long getId() { return id; }
     public void setId(Long id) { this.id = id; }
     public String getNombre() { return nombre; }
@@ -63,6 +60,4 @@ public class Curso {
     public void setPracticas(Set<Practica> practicas) { this.practicas = practicas; }
     public Set<Evaluacion> getEvaluaciones() { return evaluaciones; }
     public void setEvaluaciones(Set<Evaluacion> evaluaciones) { this.evaluaciones = evaluaciones; }
-    public Set<Estudiante> getEstudiantes() { return estudiantes; }
-    public void setEstudiantes(Set<Estudiante> estudiantes) { this.estudiantes = estudiantes; }
 }

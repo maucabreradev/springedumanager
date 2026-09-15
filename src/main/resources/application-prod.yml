@@ -1,6 +1,6 @@
 spring:
   datasource:
-    url: jdbc:mysql://mysql:3306/springedumanager?useSSL=false&serverTimezone=UTC
+    url: jdbc:mysql://mysql:3306/springedumanager?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true
     username: springedu
     password: springedupass
   jpa:
