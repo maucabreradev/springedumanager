@@ -1,0 +1,13 @@
+spring:
+  datasource:
+    url: jdbc:mysql://mysql:3306/springedumanager?useSSL=false&serverTimezone=UTC
+    username: springedu
+    password: springedupass
+  jpa:
+    show-sql: false
+  flyway:
+    locations: classpath:db/migration
+
+logging:
+  level:
+    com.maurocabrera.springedumanager: INFO
